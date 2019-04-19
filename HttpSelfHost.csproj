@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DD7B2FD-F0BF-44D0-9368-C8F8E0EC8B39}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HttpSelfHost</RootNamespace>
+    <AssemblyName>HttpSelfHost</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.4.0.0\lib\net451\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.4.0.0\lib\net451\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.6\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.6\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.5.2.6\lib\net45\System.Web.Http.SelfHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="model\StudentInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApi\controllers\DemoController.cs" />
+    <Compile Include="WebApi\EventHandles.cs" />
+    <Compile Include="WebApi\Startup.cs" />
+    <Compile Include="WebApi\WebServer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\HttpPages\Content\bootstrap-theme.css.map" />
+    <None Include="bin\Debug\HttpPages\Content\bootstrap-theme.min.css.map" />
+    <None Include="bin\Debug\HttpPages\Content\bootstrap.css.map" />
+    <None Include="bin\Debug\HttpPages\Content\bootstrap.min.css.map" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\animated.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\core.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\icons.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\larger.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\list.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\path.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\less\variables.less" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\fonts\ionicons.eot" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\fonts\ionicons.ttf" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\fonts\ionicons.woff" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\animation\ease.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\animation\fade.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\animation\index.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\animation\move.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\animation\slide.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\article.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\base.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\fonts\ionicons.eot" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\fonts\ionicons.ttf" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\fonts\ionicons.woff" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\ionicons.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\_ionicons-font.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\_ionicons-icons.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\_ionicons-variables.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\index.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\layout.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\normalize.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\affix.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\alert.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\back-top.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\badge.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\button.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\card.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\carousel.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\cascader.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\checkbox.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\circle.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\collapse.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\date-picker.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\dropdown.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\form.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\index.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\input-number.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\input.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\loading-bar.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\menu.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\message.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\modal.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\notice.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\page.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\poptip.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\progress.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\radio.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\rate.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\select-dropdown.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\select.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\slider.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\spin.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\steps.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\switch.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\table.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\tabs.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\tag.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\time-picker.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\timeline.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\tooltip.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\transfer.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\tree.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\components\upload.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\copyright.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\custom.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\index.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\breadcrumb.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\button.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\caret.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\checkbox.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\clearfix.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\close.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\common.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\content.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\index.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\input.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\layout.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\loading.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\mask.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\select.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\size.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\mixins\tooltip.less" />
+    <None Include="bin\Debug\HttpPages\Content\Iview\my-theme\README.md" />
+    <None Include="bin\Debug\HttpPages\Content\jSet\MainModule.vue" />
+    <None Include="bin\Debug\HttpPages\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="bin\Debug\HttpPages\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="bin\Debug\HttpPages\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="bin\Debug\HttpPages\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\iview.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\iview.min.js.gz" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\iview.min.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\cs-CZ.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\de-DE.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\el-GR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\en-US.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\es-ES.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\fa-IR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\fr-FR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\hi-IN.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\id-ID.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\it-IT.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\ja-JP.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\ko-KR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\nl-NL.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\pt-BR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\pt-PT.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\ro-RO.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\ru-RU.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\sv-SE.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\th-TH.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\tr-TR.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\uk-UA.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\vi-VN.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\zh-CN.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\IView\locale\zh-TW.js.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.min.map" />
+    <None Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.slim.min.map" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\HttpPages\Content\bootstrap-theme.css" />
+    <Content Include="bin\Debug\HttpPages\Content\bootstrap-theme.min.css" />
+    <Content Include="bin\Debug\HttpPages\Content\bootstrap.css" />
+    <Content Include="bin\Debug\HttpPages\Content\bootstrap.min.css" />
+    <Content Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="bin\Debug\HttpPages\Content\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="bin\Debug\HttpPages\Content\images\camera.png" />
+    <Content Include="bin\Debug\HttpPages\Content\images\case-ca_32.png" />
+    <Content Include="bin\Debug\HttpPages\Content\images\centerpos.gif" />
+    <Content Include="bin\Debug\HttpPages\Content\images\group01.png" />
+    <Content Include="bin\Debug\HttpPages\Content\images\group02.png" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\commonet_template.html" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\fonts\ionicons.svg" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\iview.css" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\jextform.css" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\my-theme\common\iconfont\fonts\ionicons.svg" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\template_init.js" />
+    <Content Include="bin\Debug\HttpPages\Content\Iview\vue-baidu-map.js" />
+    <Content Include="bin\Debug\HttpPages\Content\Site.css" />
+    <Content Include="bin\Debug\HttpPages\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bin\Debug\HttpPages\page\Demo.html" />
+    <Content Include="bin\Debug\HttpPages\Scripts\axios.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\axios.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\bootstrap.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\bootstrap.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\iview.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\iview.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\cs-CZ.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\de-DE.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\el-GR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\en-US.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\es-ES.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\fa-IR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\fr-FR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\hi-IN.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\id-ID.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\it-IT.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\ja-JP.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\ko-KR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\nl-NL.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\pt-BR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\pt-PT.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\ro-RO.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\ru-RU.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\sv-SE.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\th-TH.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\tr-TR.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\uk-UA.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\vi-VN.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\zh-CN.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\IView\locale\zh-TW.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery.validate.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery.validate.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\lodash.min.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\modernizr-2.8.3.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\spark-md5.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\vue.js" />
+    <Content Include="bin\Debug\HttpPages\Scripts\vue.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\HttpPages\Content\Iview\my-theme\dist\fonts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
